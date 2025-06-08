@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NOTREALCHAMAN Portfolio</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+    /* Reset & base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: radial-gradient(ellipse at bottom, #1a1a2e 0%, #0f0f1a 100%);
+      color: #eee;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Starry background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      background:
+        radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 80% 70%, #fff, transparent),
+        radial-gradient(1.2px 1.2px at 50% 90%, #fff, transparent),
+        radial-gradient(2px 2px at 70% 20%, #fff, transparent);
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      animation: starMove 100s linear infinite;
+      z-index: 0;
+    }
+    @keyframes starMove {
+      0% {background-position: 0 0, 0 0, 0 0, 0 0;}
+      100% {background-position: -200px -200px, -150px -100px, -100px -150px, -50px -100px;}
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 25, 0.85);
+      padding: 1rem 2rem;
+      z-index: 10;
+      border-bottom: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    header .logo {
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: #fff;
+      letter-spacing: 2px;
+      user-select: none;
+      font-family: 'Poppins', sans-serif;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #bbb;
+      margin-left: 2rem;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #45b3ff;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+      position: relative;
+    }
+
+    /* Section styling */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h1, h2 {
+      font-weight: 600;
+      color: #45b3ff;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    /* About section */
+    .about h3 {
+      color:#68b0f3; 
+      font-weight: 400; 
+      font-style: italic; 
+      margin-bottom: 1rem;
+    }
+    .about p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 700px;
+      line-height: 1.7;
+      font-weight: 400;
+      background: linear-gradient(90deg, #2f3e46, #3a4f61);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(69,179,255,0.3);
+      user-select: text;
+      white-space: pre-line;
+    }
+
+    /* Skills */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .skill-item {
+      background: #15202b;
+      flex: 1 1 120px;
+      max-width: 140px;
+      padding: 1.3rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(69,179,255,0.3);
+      text-align: center;
+      color: #a0c4ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .skill-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(69,179,255,0.7);
+      color: #45b3ff;
+    }
+    .skill-item i {
+      font-size: 3rem;
+      margin-bottom: 0.6rem;
+    }
+    .skill-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+
+    /* Projects placeholder */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .project-card {
+      background: #15202b;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 3px 10px rgba(69,179,255,0.25);
+      transition: background 0.3s ease;
+      cursor: pointer;
+      color: #a0c4ff;
+    }
+    .project-card:hover {
+      background: #1f2a40;
+      color: #45b3ff;
+    }
+    .project-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+    .project-desc {
+      font-size: 1rem;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    /* Footer */
+    footer {
+      background: #0a0a14;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: #555;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+      user-select: none;
+      position: relative;
+      z-index: 5;
+    }
+    footer .social-icons {
+      margin: 0.5rem 0 1rem;
+    }
+    footer .social-icons a {
+      color: #555;
+      margin: 0 1rem;
+      font-size: 2.5rem;  /* bigger icons */
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    footer .social-icons a:hover {
+      color: #45b3ff;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
+      main {
+        padding: 3rem 1rem;
+      }
+      .skills-list {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">no chaman here</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#soon-projects">Soon Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="about">
+      <h1>Hi, I'm Your chaman </h1>
+     <h3>AI Developer | Blockchain Enthusiast | AI & ML Learner</h3>
+  <p>
+    I am a passionate AI Developer and Blockchain Developer dedicated to crafting secure, scalable, and innovative decentralized applications and solutions. My expertise lies in blockchain architecture, smart contract development, and data integrity systems designed to revolutionize industries such as healthcare and education.
+
+    Currently, I am expanding my skill set by diving deep into Python programming, machine learning (ML), and deep learning (DL) to build intelligent, data-driven software that can solve complex real-world problems.
+
+    With a strong foundation in software engineering principles, I prioritize writing clean, maintainable, and efficient code. I thrive on continuous learning, collaboration, and merging blockchain innovations with AI advancements to develop impactful products that improve lives.
+
+    My commitment is to leverage cutting-edge technologies to build trustworthy systems and scalable applications that stand the test of time.
+  </p>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2>My Skills</h2>
+      <div class="skills-list">
+        <div class="skill-item">
+          <i class="fab fa-python"></i>
+          <div class="skill-name">Python</div>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-cube"></i>
+          <div class="skill-name">Blockchain</div>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-robot"></i>
+          <div class="skill-name">Machine Learning</div>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-brain"></i>
+          <div class="skill-name">Deep Learning</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="soon-projects" class="projects-section">
+      <h2>Soon Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <div class="project-title">AI Chat Website</div>
+          <div class="project-desc">An intelligent web-based chat application powered by advanced AI algorithms, designed for smooth and natural conversations.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Desktop AI Application</div>
+          <div class="project-desc">A robust desktop application leveraging machine learning models for intelligent automation and data analysis.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Personal AI Assistant</div>
+          <div class="project-desc">Developing a personalized AI assistant that learns user preferences to enhance productivity and manage daily tasks.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Blockchain DataStore</div>
+          <div class="project-desc">A secure, decentralized data storage solution tailored for hospitals, schools, and other institutions to guarantee data privacy and integrity.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">More Projects Soon</div>
+          <div class="project-desc">Stay tuned for more exciting and innovative projects in AI, Blockchain, and beyond.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    &copy; 2025 NOTREALCHAMAN. All rights reserved.
+    <div class="social-icons">
+      <a href="mailto:youremail@example.com" title="Email" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/yourgithub" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/yourlinkedin" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/yourtwitter" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com/yourinstagram" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+</body>
+</html>
